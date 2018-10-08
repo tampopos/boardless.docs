@@ -24,6 +24,6 @@ json ファイルは存在しない場合無視される。
 
 ## パラメータにマップするクラス
 
-- [web](../Tmpps.Boardless.Web/Configuration/BoardlessWebConfig.cs)
-- [cli](../Tmpps.Boardless.Domain.Common/Configuration/BoardlessConfig.cs)
-- [subscriber](../Tmpps.Boardless.Domain.Common/Configuration/BoardlessConfig.cs)
+- [web](https://github.com/wakuwaku3/tmpps.boardless.api/tree/master/Tmpps.Boardless.Web/Configuration/BoardlessWebConfig.cs)
+- [cli](https://github.com/wakuwaku3/tmpps.boardless.api/tree/master/Tmpps.Boardless.Domain.Common/Configuration/BoardlessConfig.cs)
+- [subscriber](https://github.com/wakuwaku3/tmpps.boardless.api/tree/master/Tmpps.Boardless.Domain.Common/Configuration/BoardlessConfig.cs)

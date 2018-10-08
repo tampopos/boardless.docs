@@ -1,4 +1,4 @@
-# index
+# api documents
 
 - [アーキテクチャ](./architecture-design.md)
 - [規約](./rules.md)

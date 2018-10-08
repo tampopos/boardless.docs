@@ -20,7 +20,7 @@
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.disableLanguages": ["jchannon.csharpextensions"],
-  "cSpell.words": [
+"cSpell.words": [
     "Autofac",
     "CQRS",
     "Hmac",
@@ -37,13 +37,18 @@
     "gitignore",
     "hoge",
     "huga",
+    "injectable",
+    "inversify",
     "msgs",
     "nuget",
     "postgres",
     "postgresql",
     "psql",
-    "tmpps"
-  ],
+    "sccc",
+    "ssfc",
+    "tmpps",
+    "typeof"
+],
   "cSpell.ignoreRegExpList": ["/.*ー/"],
   "cSpell.ignorePaths": [
     "**/package-lock.json",
