@@ -96,9 +96,9 @@ redux のデータフローでは非同期の実装は取り扱えない。こ�
 
 ## 関連項目
 
-- [components](.components.md)  
+- [components](./components.md)  
   React.Component と redux を接続するための方法
-- [getters](.getters.md)  
+- [getters](./getters.md)  
   state を拡張するためのメソッド郡を実装する
-- [services](.services.md)  
+- [services](./services.md)  
   ビジネスロジックを記述する

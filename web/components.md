@@ -100,5 +100,5 @@ export const Hoge = withConnectedRouter(mapStateToProps, mapDispatchToProps)(
   mapStateToProps での state の拡張
 - [services](./services.md)  
   mapDispatchToProps 内でのビジネスロジックの呼び出し
-- [local](./local.md)  
+- local  
   多言語対応
