@@ -91,17 +91,17 @@ export const Parent = decorate(styles)(props => {
 
 ## 関連項目
 
-- [jss 公式ドキュメント](https://github.com/cssinjs/jss)
 - [Material-UI 公式ドキュメント](https://material-ui.com/)
   - [Grid](https://material-ui.com/layout/grid/)  
     Bootstrap like な Grid システムの実装
-  - [Breakpoints](https://material-ui.com/layout/breakpoints/)
+  - [Breakpoints](https://material-ui.com/layout/breakpoints/)  
     media クエリを書くときに参照する
-  - [Transitions](https://material-ui.com/utils/transitions/)
+  - [Transitions](https://material-ui.com/utils/transitions/)  
     animation を付けたい時
-  - [Themes](https://material-ui.com/customization/themes/)
+  - [Themes](https://material-ui.com/customization/themes/)  
     テーマ に関して
-  - [Overrides](https://material-ui.com/customization/overrides/)
+  - [Overrides](https://material-ui.com/customization/overrides/)  
     標準コンポーネントのスタイルの上書き
-  - [Default Theme](https://material-ui.com/customization/default-theme/)
+  - [Default Theme](https://material-ui.com/customization/default-theme/)  
     Materil-UI のテーマの初期値
+- [jss 公式ドキュメント](https://github.com/cssinjs/jss)
