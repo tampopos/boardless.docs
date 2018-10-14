@@ -9,6 +9,8 @@
 
 interface と 実体は別ファイルで実装する必要がある
 
+#### interfaces/hoge-service.ts
+
 ```ts
 export interface IHogeService {
   execute: (hoge: string, history: History) => void;
@@ -16,6 +18,8 @@ export interface IHogeService {
 ```
 
 ### service
+
+#### hoge-service.ts
 
 ```ts
 @injectable()
@@ -49,4 +53,35 @@ export class HogeService implements IHogeService {
     history.push(`/${newHoge}`);
   };
 }
+```
+
+### container
+
+#### services.ts
+
+```ts
+export interface Services {
+  hogeService: IHogeService;
+}
+```
+
+#### service-provider.ts
+
+```ts
+register('hogeService')
+  .to(HogeService)
+  .inSingletonScope();
+```
+
+### 呼び出し側
+
+service は 基本的に mapDispatchToProps メソッドで呼ばれることを想定する
+
+#### hoge.tsx
+
+```ts
+const mapDispatchToProps: DispatchMapper<Events, OwnProps> = dispatch => {
+  const { execute } = resolve('hogeService');
+  return { execute };
+};
 ```
