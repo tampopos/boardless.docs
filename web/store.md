@@ -15,71 +15,99 @@ domain 毎に子 state を作り、アプリケーション全体で管理する
 #### hoge-state.ts
 
 ```ts
-// パターン1
+// パターン1(スニペット`stated`で展開)
 export const defaultHogeState={
     hoge:string;
 }
 export type HogeState = typeof defaultHogeState;
 
-// パターン2
+// パターン2(スニペット`state`で展開)
 export interface HogeState{
     hoge:string;
 }
 export const defaultHogeState:HogeState={
     hoge:string;
 }
+export default HogeState;
 ```
 
 #### stored-state.ts
 
 ```ts
 export const defaultState = {
-  hogeState: defaultHogeState
+  hoge: defaultHogeState
 };
+```
+
+### action
+
+dispatch(store に変更を適用すること) する際の action の payload の型を定義する。
+スニペット`action`で展開可能
+
+#### hoge/action.ts
+
+```ts
+export interface Action {
+  reset: void;
+  set: { hoge: string };
+}
+export default Action;
 ```
 
 ### actionCreators
 
-状態変化を reducer に伝えるための action を作る部分
+状態変化を reducer に伝えるための変数を作る部分
+スニペット`actc`で展開可能
 
-#### hoge-action-creators.ts
+#### hoge/action-creators.ts
 
-````ts
-// typescript-fsa による action-creator を生成するためのfactory
-const factory = actionCreatorFactory();
-export const hogeActionCreators = {
-  // reducerはここで指定する文字列をキーに動作するため、reducer毎に一意に実装する必要がある
-  set: factory<{hoge:string}>('hogeActionCreators.set'),
-};```
-````
+```ts
+const actionCreators = createActionCreators('hoge')<Action>('reset', 'set');
+export const { reset, set } = actionCreators;
+export default actionCreators;
+```
+
+### functions
+
+state を変更するための値の整形ロジックを定義する。ここにはビジネスロジックは書かない。  
+スニペット`fncs`で展開可能
+
+#### hoge/functions.ts
+
+```ts
+const functions: ReducerFunctions<State, Action> = {
+  reset: s => {
+    return defaultState;
+  },
+  set: (s, { hoge }) => {
+    // 新規オブジェクトとしてstateを戻すとコミットされる
+    return { ...s, { hoge } };
+  }
+};
+export default functions;
+```
 
 ### reducer
 
-state を変更する部分。ここにはビジネスロジックは書かない。  
-reducer は変更する子 state 毎に定義し、observe する action に対して case を書く。  
-このことから action と case は 1 対多の関係性になる。  
-最後に createReducers に実装した子 reducer を登録する。
+actionCreators と functions から reducer を生成する。
+スニペット`reducers`で展開可能
 
-#### hoge-reducer.ts
+#### hoge/index.ts
 
 ```ts
-export const hogeReducer = (storedState: StoredState) =>
-  reducerWithInitialState(storedState.hogeState).case(
-    hogeActionCreators.set,
-    (s, { hoge }) => {
-      // 新規オブジェクトとしてstateを戻すとコミットされる
-      return { ...s, hoge };
-    }
-  );
+import { createReducers } from '../redux-helper';
+import actionCreators from './action-creators';
+import functions from './functions';
+
+export const hogeReducer = createReducers(actionCreators, functions);
 ```
 
 #### reducer-factory.ts
 
 ```ts
-const createReducers = (initialState: StoredState) =>
-  combineReducers<StoredState>({
-    hogeState: hogeReducer(initialState)
-  });
+const builders: ReducerBuilders<StoredState> = {
+  hoge: hogeReducer
+};
 ```
 
 ## ローカルストレージ
@@ -98,7 +126,7 @@ redux のデータフローでは非同期の実装は取り扱えない。こ�
 
 - [components](./components.md)  
   React.Component と redux を接続するための方法
-- [getters](./getters.md)  
+- [selectors](./selectors.md)  
   state を拡張するためのメソッド郡を実装する
 - [services](./services.md)  
   ビジネスロジックを記述する

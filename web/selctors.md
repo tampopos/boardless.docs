@@ -1,15 +1,16 @@
-# getters
+# selectors
 
 store 管理で管理する state はシリアライズ可能であることが望ましい。  
-このため mapStateToProps 等で呼び出す state に依存する get メソッドを共通化したい場合は getter オブジェクトに定義する。
+このため mapStateToProps 等で呼び出す state に依存する get メソッドを共通化したい場合は selectors オブジェクトに定義する。
+スニペット`selectors`で展開可能。
 
 ## 実装例
 
-### hoge-getters.ts
+### hoge-selectors.ts
 
 ```ts
-export class HogeGetters {
-  constructor(private state: HogeState) {}
+export class HogeSelectors {
+  constructor(private state: State) {}
   public get existsHoge() {
     const { hoge } = this.state;
     return Boolean(hoge);
@@ -23,7 +24,7 @@ export class HogeGetters {
 const mapStateToProps: StateMapperWithRouter<Props, Param, OwnProps> = ({
   hogeState
 }) => {
-  const { existsHoge } = new HogeGetters(hogeState);
+  const { existsHoge } = new HogeSelectors(hogeState);
   return { existsHoge };
 };
 ```

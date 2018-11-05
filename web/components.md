@@ -34,8 +34,8 @@ const mapStateToProps: StateMapperWithRouter<Props, Param, OwnProps> = (
   // RouteComponent<Param> & OwnProps
   { history }
 ) => {
-  // State のみに依存する共通メソッドは Getters に実装する
-  const { resources } = new AccountsGetters(accountsState);
+  // State のみに依存する共通メソッドは Selectors に実装する
+  const { resources } = new AccountsSelectors(accountsState);
   // Partial<Props> を戻す
   return { resources, history };
 };
@@ -96,7 +96,7 @@ export const Hoge = withConnectedRouter(mapStateToProps, mapDispatchToProps)(
 
 - [styles](./styles.md)  
   css の実装方法
-- [getters](./getters.md)  
+- [selectors](./selectors.md)  
   mapStateToProps での state の拡張
 - [services](./services.md)  
   mapDispatchToProps 内でのビジネスロジックの呼び出し

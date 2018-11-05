@@ -62,8 +62,9 @@ const childStyles = createStyles({
   child: {}
 });
 export const Child = decorate(childStyles)(props => {
-  // getInjectClasses で classes を取得する
-  const { root,child } = getInjectClasses(props);
+  // createPropagationProps で classes を取得する
+  const { classes } = createPropagationProps(props);
+  const { root,child } = classes;
   // class の合成には appendClassName を使う
   const className = appendClassName(root,child)
   return <div className={className}>xxx</div>;
